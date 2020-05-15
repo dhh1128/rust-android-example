@@ -1,0 +1,29 @@
+[package]
+name = "rust"
+version = "0.1.0"
+authors = ["Daniel Hardman <daniel.hardman@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+jni = { version = "0.10.2", default-features = false }
+bulletproofs_amcl = { version = "0.2", path = "../../../ursa/libzmix/bulletproofs_amcl" }
+clap = "2.33.0"
+regex = "1"
+hex = "0.3.1"
+lazy_static = "1.4.0"
+rand = "0.7.3"
+
+[dependencies.amcl_wrapper]
+version = "0.3.5"
+default-features = false
+features = ["bls381"]
+
+[profile.release]
+lto = true
+
+[lib]
+name = "rust"
+crate-type = ["cdylib"]
+
